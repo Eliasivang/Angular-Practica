@@ -1,2 +1,17 @@
-<p>formulario works!</p>
-<router-outlet></router-outlet>
+
+ <form  [formGroup]="practiceForm" (ngSubmit)="enviar()">
+        <label for="name">Nombre:</label><br>
+        <input formControlName="name" id="name" type="text"><br>
+        <p *ngIf="hasErrors('name','required')" >Nombre requerido </p>
+    
+    <label for="telephone">Telefono:</label><br>
+        <input formControlName="telephone" id="telephone" type="number"><br>
+    
+    <label for="email">Email:</label><br>
+        <input formControlName = "email" id="email" type="email"><br>
+    
+    <label for="contrasnia">Contrasnia:</label><br>
+        <input formControlName="password" id="contrasnia" type="password"><br>
+   
+    <button type="submit">Enviar</button>  
+ </form>

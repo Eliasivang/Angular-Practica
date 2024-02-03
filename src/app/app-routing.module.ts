@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 //creamos las rutas con mediante el router module. Constante que contiene un array de obj.
 const routes : Routes = [ 
   {
+    path:"", // si no ponemos nada nos redirigira a la pagina formulario
+    redirectTo: "home",
+    pathMatch:"full"
+  },
+  {
     path:'home',
     component:  HomeComponent
   },
@@ -18,11 +23,6 @@ const routes : Routes = [
     path: "**", // si ponemos cualquier ruta que no este especificada nos mostrara el componente not found.
     component: PageNotFoundComponent
   },
-  {
-    path:" ", // si no ponemos nada nos redirigira a la pagina formulario
-    redirectTo: "/home",
-    pathMatch:"full"
-  }
 ]
 
 @NgModule({
