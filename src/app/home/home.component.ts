@@ -1,11 +1,11 @@
 import { Component,EventEmitter,Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-padre',
-  templateUrl: './padre.component.html',
-  styleUrl: './padre.component.css'
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class PadreComponent {
+export class HomeComponent {
 
 @Input() title ?: string;
  

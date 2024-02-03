@@ -3,12 +3,16 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PadreComponent } from './padre/padre.component';
+import { HomeComponent} from './home/home.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PadreComponent
+    HomeComponent,
+    FormularioComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
