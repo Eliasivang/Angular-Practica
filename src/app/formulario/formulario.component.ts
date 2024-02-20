@@ -12,17 +12,13 @@ export class FormularioComponent {
   constructor(private form: FormBuilder){
      this.practiceForm = this.form.group({
       name: ['', Validators.required],
-      email: ['', Validators.email],
+      email: ['',Validators.email],
       telephone: ['', Validators.required],
       password:['', Validators.required]
     })
   }
 
-  enviar(){
-    console.log(this.practiceForm)
-  }
-
-  hasErrors( controlName : string, errorType:string ){
+ hasErrors( controlName : string, errorType:string ){
     return this.practiceForm.get(controlName)?.hasError(errorType) && this.practiceForm.get(controlName)?.touched
   }
 }
