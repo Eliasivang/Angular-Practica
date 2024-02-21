@@ -2,30 +2,37 @@
 <h2>
 Formulario CRUD 
 </h2>
- <form class="border rounded p-2 " [formGroup]="practiceForm">
+ <form class="border rounded p-2 " [formGroup]="practiceForm" (ngSubmit)="addUser()">
         <label class="form-label" for="name">Nombre:*</label>
-        <input class="form-control" formControlName="name" id="name" type="text">
-        <p class=" my-2 alert alert-danger p-2" *ngIf="hasErrors('name','required')" >Nombre requerido </p>
-
+        <input class="form-control" formControlName="name" id="name" type="text" required>
+        @if(hasErrors('name','required')){
+            <p class=" my-2 alert alert-danger p-2">Nombre requerido </p>
+        }    
 
         <label class="form-label" for="telephone">Telefono:*</label>
-        <input formControlName="telephone" class="form-control" id="telephone" type="number">
-        <p  class="my-2 alert alert-danger p-2" *ngIf="hasErrors('telephone','required')" >Telefono requerido </p>
+        <input formControlName="telephone" class="form-control" id="telephone" type="number" required>
+        @if(hasErrors('telephone','required' || 'email')){
+            <p  class="my-2 alert alert-danger p-2">Ingrese un telefono valido </p>
+        }
 
         <label class="form-label" for="email">Email:*</label>
-        <input class="form-control"     formControlName ="email" id="email" type="email">
-        <p class="my-2 alert alert-danger p-2" *ngIf="hasErrors('email','email')">Email requerido </p>
+        <input class="form-control" formControlName ="email" id="email" type="email" required>
+        @if(hasErrors('email','required')){
+            <p class="my-2 alert alert-danger p-2">Ingrese un email valido </p>
+        }
 
         <label class="form-label" for="contraseña">Contraseña:*</label>
-        <input class="form-control" formControlName="password" id="contraseña" type="password">
-        <p class=" my-2 alert alert-danger p-2" *ngIf="hasErrors('password','required')" >Ingrese una contraseña</p>
+        <input class="form-control" formControlName="password" id="contraseña" type="password" required>
+        @if(hasErrors('password','required')){
+        <p class=" my-2 alert alert-danger p-2" *ngIf="hasErrors('password','required')" >Ingrese una contraseña valida</p>
+        }
+
         <div id="passwordHelpBlock" class="form-text">
             Su contraseña debe tener 8-20 caracteres de longitud, contener letras,numeros y caracteres especiales.
         </div>
-
-    <button type="submit" class="btn btn-success my-2"> Enviar</button>  
+    <button [disabled]="practiceForm.invalid"  type="submit" class="btn btn-success my-2"> Enviar</button>  
  </form> 
 
  <div>
-    
+
  </div>

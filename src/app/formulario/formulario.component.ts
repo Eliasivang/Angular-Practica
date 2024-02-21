@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder,FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, Validators ,FormControl} from '@angular/forms';
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -8,17 +8,24 @@ import { FormBuilder,FormGroup, ReactiveFormsModule, Validators } from '@angular
 
 export class FormularioComponent {
 
-  practiceForm: FormGroup;
-  constructor(private form: FormBuilder){
-     this.practiceForm = this.form.group({
-      name: ['', Validators.required],
-      email: ['',Validators.email],
-      telephone: ['', Validators.required],
-      password:['', Validators.required]
+
+  public practiceForm = new FormGroup({
+      name: new FormControl("", Validators.required),
+      email: new FormControl("" ,[Validators.required, Validators.email]),
+      telephone: new FormControl("", [Validators.required, Validators.minLength(10)]), 
+      password: new FormControl("", Validators.required)
     })
+  
+
+  addUser(){
+      console.log({
+      formIsValid: this.practiceForm.valid,
+      value: this.practiceForm.value,
+      errors: this.practiceForm.errors
+  })
   }
 
- hasErrors( controlName : string, errorType:string ){
+  hasErrors( controlName : string, errorType:string ){
     return this.practiceForm.get(controlName)?.hasError(errorType) && this.practiceForm.get(controlName)?.touched
   }
 }
