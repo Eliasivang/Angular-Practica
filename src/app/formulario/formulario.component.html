@@ -1,38 +1,62 @@
 
-<h2>
-Formulario CRUD 
-</h2>
- <form class="border rounded p-2 " [formGroup]="practiceForm" (ngSubmit)="addUser()">
+
+ <form class="border rounded p-2 row" [formGroup]="practiceForm" (ngSubmit)="addUser()">
+    <h2 class="text-center m-2">
+        Formulario CRUD 
+    </h2>
+    <div class="col-6">
         <label class="form-label" for="name">Nombre:*</label>
         <input class="form-control" formControlName="name" id="name" type="text" required>
         @if(hasErrors('name','required')){
-            <p class=" my-2 alert alert-danger p-2">Nombre requerido </p>
-        }    
-
+            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+        }
+        @if(hasErrors('name','minlength')){
+            <p class=" my-2 alert alert-danger p-2">El nombre es muy corto.</p>
+        }
+    </div>   
+    <div class="col-6">
         <label class="form-label" for="telephone">Telefono:*</label>
         <input formControlName="telephone" class="form-control" id="telephone" type="number" required>
-        @if(hasErrors('telephone','required' || 'email')){
-            <p  class="my-2 alert alert-danger p-2">Ingrese un telefono valido </p>
+        @if(hasErrors('telephone','required')){
+            <p  class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
         }
 
+    </div>
+    
+    <div class="col-12">
+        <label class="form-label" for="contraseña">Direccion*</label>
+        <input class="form-control" formControlName="adress" id="contraseña" type="text" required>
+        @if(hasErrors('adress','required')){
+            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+        }
+    </div>
+    <div class="col-12">
+        <label class="form-label" for="adress2">Direccion 2</label>
+        <input class="form-control" formControlName="adress2" id="adress2" type="text">  
+    </div>
+    
+    <div class="col-6">
+        <label class="form-label" for="city">Ciudad*</label>
+        <input class="form-control" formControlName="city" id="city" type="text" required>
+        @if(hasErrors('city','required')){
+        <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+        }
+    </div>
+    <div class="col-6">
         <label class="form-label" for="email">Email:*</label>
         <input class="form-control" formControlName ="email" id="email" type="email" required>
         @if(hasErrors('email','required')){
-            <p class="my-2 alert alert-danger p-2">Ingrese un email valido </p>
+            <p class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
         }
-
-        <label class="form-label" for="contraseña">Contraseña:*</label>
-        <input class="form-control" formControlName="password" id="contraseña" type="password" required>
-        @if(hasErrors('password','required')){
-        <p class=" my-2 alert alert-danger p-2" *ngIf="hasErrors('password','required')" >Ingrese una contraseña valida</p>
+        @if(hasErrors('email','email')){
+            <p class="my-2 alert alert-danger p-2">Ingrese un email valido.</p>
         }
+    </div>
+    <div class="text-center my-3">
+        <button [disabled]="practiceForm.invalid" type="submit" class="btn btn-success col-2"> Enviar</button>
+    </div>
+        
 
-        <div id="passwordHelpBlock" class="form-text">
-            Su contraseña debe tener 8-20 caracteres de longitud, contener letras,numeros y caracteres especiales.
-        </div>
-    <button [disabled]="practiceForm.invalid"  type="submit" class="btn btn-success my-2"> Enviar</button>  
- </form> 
 
- <div>
-
- </div>
+</form> 
+{{CurrentUser | json}}
