@@ -1,9 +1,29 @@
 
-<nav class="grid col-12 ">
-    <img class="grid col-1 m-3 " src="../assets/NM-35bb9674.png" alt="Horamar-Logo">
-    <button type="button" class="btn btn-primary m-1">Iniciar Sesion</button>
-    <button type="button" class="btn btn-primary m-1">Crear una cuenta</button>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+    <div class="container-fluid">
+    <img style="height: 80; width: 80px;" class="grid col-1 m-3 " src="../assets/NM-35bb9674.png" alt="Horamar-Logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link navbar-text" href="#">Formularios</a>
+          </li>
+        </ul>
+      
+      <div class="d-flex gap-2">
+        <button type="button" class=" btn btn-outline-primary">Iniciar Sesion</button>
+        <button type="button" class=" btn btn-outline-primary">Crear una cuenta</button>
+      </div>
+    </div>
+    </div>
+  </nav>
+<nav class="grid col-12 ">    
 </nav>
+
+
 <div class="container">
 <router-outlet />
 </div>

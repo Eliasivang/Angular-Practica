@@ -16,7 +16,7 @@ export class FormularioComponent {
     public practiceForm = new FormGroup({
         name: new FormControl("",[Validators.required, Validators.minLength(2)]),
         vessel: new FormControl("",Validators.required,), 
-        email: new FormControl("" ,[Validators.required, Validators.email]),
+        NúmeroIMO: new FormControl("" ,[Validators.required, Validators.email]),
         adress: new FormControl("", Validators.required),
         adress2: new FormControl(""),
         city: new FormControl("",Validators.required),
