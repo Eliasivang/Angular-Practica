@@ -1,62 +1,81 @@
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Agregar un nuevo Buque
+</button>
 
- <form class="border rounded p-2 row" [formGroup]="practiceForm" (ngSubmit)="addUser()">
-    <h2 class="text-center m-2">
-        Formulario CRUD 
-    </h2>
-    <div class="col-6">
-        <label class="form-label" for="name">Nombre:*</label>
-        <input class="form-control" formControlName="name" id="name" type="text" required>
-        @if(hasErrors('name','required')){
-            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-        }
-        @if(hasErrors('name','minlength')){
-            <p class=" my-2 alert alert-danger p-2">El nombre es muy corto.</p>
-        }
-    </div>   
-    <div class="col-6">
-        <label class="form-label" for="telephone">Telefono:*</label>
-        <input formControlName="telephone" class="form-control" id="telephone" type="number" required>
-        @if(hasErrors('telephone','required')){
-            <p  class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-        }
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar un nuevo buque</h1>
+                                    <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                    <div class="modal-body">
+                            <form class="p-2" [formGroup]="practiceForm" (ngSubmit)="addVessel()">   
+                                    <div class="col-12">
+                                            <label class="form-label" for="name">Nombre del Buque:*</label>
+                                            <input class="form-control" formControlName="name" id="name" type="text" required>
+                                            @if(hasErrors('name','required')){
+                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            }
+                                            @if(hasErrors('name','minlength')){
+                                                <p class=" my-2 alert alert-danger p-2">El nombre es muy corto.</p>
+                                            }
+                                    </div>   
+                                    <div class="col-12">
+                                            <label class="form-label" for="vessel">Bandera:*</label>
+                                            <select formControlName="vessel" id="vessel" class="form-select" aria-label="Default select example">
+                                                <option value="">Seleccionar una opcion</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                            @if(hasErrors('vessel','required')){
+                                                <p  class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            }
+                                    </div>
+                                    <div class="col-12">
+                                            <label class="form-label" for="contraseña">Contraseña*</label>
+                                            <input class="form-control" formControlName="adress" id="contraseña" type="text" required>
+                                            @if(hasErrors('adress','required')){
+                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            }
+                                    </div>
+                                    <div class="col-12">
+                                            <label class="form-label" for="adress2">Direccion 2</label>
+                                            <input class="form-control" formControlName="adress2" id="adress2" type="text">  
+                                    </div>
+                            
+                                    <div class="col-6">
+                                            <label class="form-label" for="city">Ciudad*</label>
+                                            <input class="form-control" formControlName="city" id="city" type="text" required>
+                                            @if(hasErrors('city','required')){
+                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            }
+                                    </div>
+                                    <div class="col-6">
+                                            <label class="form-label" for="email">Email:*</label>
+                                            <input class="form-control" formControlName ="email" id="email" type="email" required>
+                                            @if(hasErrors('email','required')){
+                                                <p class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            }
+                                            @if(hasErrors('email','email')){
+                                                <p class="my-2 alert alert-danger p-2">Ingrese un email valido.</p>
+                                            }
+                                        </div>
+                                        <div class="modal-footer mt-4">
+                                                <button type="button" class="btn btn-secondary" (click)="resetForm()" data-bs-dismiss="modal">Close</button>
+                                                <button [disabled]="practiceForm.invalid" onsubmit="addVessel()" type="submit" class="btn btn-primary">Agregar</button>
+                                        </div>
+                                    </form> 
+                                    
+                    </div>
+    </div>
+    </div>
+</div>
 
-    </div>
-    
-    <div class="col-12">
-        <label class="form-label" for="contraseña">Direccion*</label>
-        <input class="form-control" formControlName="adress" id="contraseña" type="text" required>
-        @if(hasErrors('adress','required')){
-            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-        }
-    </div>
-    <div class="col-12">
-        <label class="form-label" for="adress2">Direccion 2</label>
-        <input class="form-control" formControlName="adress2" id="adress2" type="text">  
-    </div>
-    
-    <div class="col-6">
-        <label class="form-label" for="city">Ciudad*</label>
-        <input class="form-control" formControlName="city" id="city" type="text" required>
-        @if(hasErrors('city','required')){
-        <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-        }
-    </div>
-    <div class="col-6">
-        <label class="form-label" for="email">Email:*</label>
-        <input class="form-control" formControlName ="email" id="email" type="email" required>
-        @if(hasErrors('email','required')){
-            <p class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-        }
-        @if(hasErrors('email','email')){
-            <p class="my-2 alert alert-danger p-2">Ingrese un email valido.</p>
-        }
-    </div>
-    <div class="text-center my-3">
-        <button [disabled]="practiceForm.invalid" type="submit" class="btn btn-success col-2"> Enviar</button>
-    </div>
-        
 
 
-</form> 
-{{CurrentUser | json}}
+
+
