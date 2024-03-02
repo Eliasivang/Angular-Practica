@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup, Validators ,FormControl} from '@angular/forms';
-import { User, } from './user.interface';
+import { Vessel} from './user.interface';
 
 @Component({
   selector: 'app-formulario',
@@ -11,33 +11,33 @@ import { User, } from './user.interface';
 
 export class FormularioComponent {
 
- 
+  
+  
   
     public practiceForm = new FormGroup({
-        name: new FormControl("",[Validators.required, Validators.minLength(2)]),
-        vessel: new FormControl("",Validators.required,), 
-        NúmeroIMO: new FormControl("" ,[Validators.required, Validators.email]),
-        adress: new FormControl("", Validators.required),
-        adress2: new FormControl(""),
-        city: new FormControl("",Validators.required),
-    })
+      name: new FormControl(" ", [Validators.required, Validators.minLength(2)]),
+      vessel: new FormControl(" ", Validators.required),
+      numeroIMO: new FormControl(" ", [Validators.required, Validators.email]),
+      adress: new FormControl(" ", Validators.required),
+      adress2: new FormControl(""),
+      city: new FormControl(" ", Validators.required),
+      email: new FormControl(" ", Validators.required),
+    });
+  
 
 
-    
+    public vessels: any[] = [];
     
 
     resetForm(): void {
       this.practiceForm.reset()
     }
+    
     addVessel(){
-        console.log({
-        formIsValid: this.practiceForm.valid,
-        value: this.practiceForm.value,
-  
-        })
-      this.practiceForm.reset();
+      this.vessels.push(this.practiceForm.value)
+      console.log(this.vessels)
+      this.resetForm()
     }
-
 
 
 

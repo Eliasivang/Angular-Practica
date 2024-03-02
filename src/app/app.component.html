@@ -1,28 +1,33 @@
-
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-    <img style="height: 80; width: 80px;" class="grid col-1 m-3 " src="../assets/NM-35bb9674.png" alt="Horamar-Logo">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <img style="height: 80; width: 80px;" class="grid col-1 m-3 " src="../assets/NM-35bb9674.png" alt="Navios-Logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Docs
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
-            <a class="nav-link navbar-text" href="#">Formularios</a>
+            <a class="nav-link" href="#">Formularios</a>
           </li>
         </ul>
-      
-      <div class="d-flex gap-2">
-        <button type="button" class=" btn btn-outline-primary">Iniciar Sesion</button>
-        <button type="button" class=" btn btn-outline-primary">Crear una cuenta</button>
+        <form class="d-flex gap-2" role="search">
+          <button class="btn btn-outline-success" type="submit">Iniciar sesion</button>
+          <button class="btn btn-outline-success" type="submit">Crear cuenta</button>
+        </form>
       </div>
     </div>
-    </div>
   </nav>
-<nav class="grid col-12 ">    
-</nav>
-
 
 <div class="container">
 <router-outlet />

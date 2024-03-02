@@ -12,15 +12,15 @@
                                     <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                     <div class="modal-body">
-                            <form class="p-2" [formGroup]="practiceForm" (ngSubmit)="addVessel()">   
+                            <form class="" [formGroup]="practiceForm" (ngSubmit)="addVessel()">   
                                     <div class="col-12">
                                             <label class="form-label" for="name">Nombre del Buque:*</label>
-                                            <input class="form-control" formControlName="name" id="name" type="text" required>
+                                            <input class="form-control" formControlName="name" id="name" type="text">
                                             @if(hasErrors('name','required')){
-                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            <p class="text-danger small">Este campo es obligatorio.</p>
                                             }
                                             @if(hasErrors('name','minlength')){
-                                                <p class=" my-2 alert alert-danger p-2">El nombre es muy corto.</p>
+                                                <p class=" text-danger small">El nombre es muy corto.</p>
                                             }
                                     </div>   
                                     <div class="col-12">
@@ -32,14 +32,14 @@
                                                 <option value="3">Three</option>
                                             </select>
                                             @if(hasErrors('vessel','required')){
-                                                <p  class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                                <p  class="small text-danger">Este campo es obligatorio.</p>
                                             }
                                     </div>
                                     <div class="col-12">
                                             <label class="form-label" for="contraseña">Numero IMO*</label>
                                             <input class="form-control" formControlName="NumeroIMO" id="contraseña" type="text" required>
-                                            @if(hasErrors('adress','required')){
-                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            @if(hasErrors('NumeroIMO','required')){
+                                            <p class=" text-danger small">Este campo es obligatorio.</p>
                                             }
                                     </div>
                                     <div class="col-12">
@@ -47,14 +47,14 @@
                                             <input class="form-control" formControlName="adress2" id="adress2" type="text">  
                                     </div>
                             
-                                    <div class="col-6">
+                                    <div class="col-12">
                                             <label class="form-label" for="city">Ciudad*</label>
                                             <input class="form-control" formControlName="city" id="city" type="text" required>
                                             @if(hasErrors('city','required')){
-                                            <p class=" my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
+                                            <p class="text-danger small">Este campo es obligatorio.</p>
                                             }
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12">
                                             <label class="form-label" for="email">Email:*</label>
                                             <input class="form-control" formControlName ="email" id="email" type="email" required>
                                             @if(hasErrors('email','required')){
@@ -65,15 +65,27 @@
                                             }
                                         </div>
                                         <div class="modal-footer mt-4">
-                                                <button type="button" class="btn btn-secondary" (click)="resetForm()" data-bs-dismiss="modal">Close</button>
-                                                <button [disabled]="practiceForm.invalid" onsubmit="addVessel()" type="submit" class="btn btn-primary">Agregar</button>
+                                                <button type="button" class="btn btn-secondary" (click)="resetForm()" data-bs-dismiss="modal"><i class="fa fa-camera-retro" aria-hidden="true"></i>Cerrar</button>
+                                                <button onsubmit="addVessel()"  type="submit" class="btn btn-primary">Agregar</button>
                                         </div>
                                     </form> 
                                     
                     </div>
-    </div>
-    </div>
+        </div>
+    </div>   
 </div>
+
+<div class="containter bg-light">Lista de Buques</div>
+<div *ngFor="let vessel of vessels">
+        barco = {{vessel.name}}
+</div>
+
+
+
+
+
+
+
 
 
 
