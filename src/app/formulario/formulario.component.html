@@ -1,91 +1,89 @@
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-    Agregar un nuevo Buque
+        Agregar un nuevo Buque
 </button>
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar un nuevo buque</h1>
-                                    <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                    <div class="modal-body">
-                            <form class="" [formGroup]="practiceForm" (ngSubmit)="addVessel()">   
-                                    <div class="col-12">
-                                            <label class="form-label" for="name">Nombre del Buque:*</label>
-                                            <input class="form-control" formControlName="name" id="name" type="text">
-                                            @if(hasErrors('name','required')){
-                                            <p class="text-danger small">Este campo es obligatorio.</p>
-                                            }
-                                            @if(hasErrors('name','minlength')){
-                                                <p class=" text-danger small">El nombre es muy corto.</p>
-                                            }
-                                    </div>   
-                                    <div class="col-12">
-                                            <label class="form-label" for="vessel">Bandera:*</label>
-                                            <select formControlName="vessel" id="vessel" class="form-select" aria-label="Default select example">
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar un nuevo buque</h1>
+                                <button (click)="resetForm()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                <div class="modal-body">
+                        <form class="p-2" [formGroup]="practiceForm" (ngSubmit)="addVessel()">   
+                                <div class="col-12">
+                                        <label class="form-label" for="name">Nombre del Buque:*</label>
+                                        <input class="form-control" formControlName="name" id="name" type="text" required>
+                                        @if(hasErrors('name','required')){
+                                        <p class=" text-danger small">Este campo es obligatorio.</p>
+                                        }
+                                        @if(hasErrors('name','minlength')){
+                                                <p class=" small da">El nombre es muy corto.</p>
+                                        }
+                                </div>   
+                                <div class="col-12">
+                                        <label class="form-label" for="bandera">Bandera:*</label>
+                                        <select formControlName="bandera" id="bandera" class="form-select" aria-label="Default select example">
                                                 <option value="">Seleccionar una opcion</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
-                                            @if(hasErrors('vessel','required')){
-                                                <p  class="small text-danger">Este campo es obligatorio.</p>
-                                            }
-                                    </div>
-                                    <div class="col-12">
-                                            <label class="form-label" for="contraseña">Numero IMO*</label>
-                                            <input class="form-control" formControlName="NumeroIMO" id="contraseña" type="text" required>
-                                            @if(hasErrors('NumeroIMO','required')){
-                                            <p class=" text-danger small">Este campo es obligatorio.</p>
-                                            }
-                                    </div>
-                                    <div class="col-12">
-                                            <label class="form-label" for="adress2">Direccion 2</label>
-                                            <input class="form-control" formControlName="adress2" id="adress2" type="text">  
-                                    </div>
-                            
-                                    <div class="col-12">
-                                            <label class="form-label" for="city">Ciudad*</label>
-                                            <input class="form-control" formControlName="city" id="city" type="text" required>
-                                            @if(hasErrors('city','required')){
-                                            <p class="text-danger small">Este campo es obligatorio.</p>
-                                            }
-                                    </div>
-                                    <div class="col-12">
-                                            <label class="form-label" for="email">Email:*</label>
-                                            <input class="form-control" formControlName ="email" id="email" type="email" required>
-                                            @if(hasErrors('email','required')){
-                                                <p class="my-2 alert alert-danger p-2">Este campo es obligatorio.</p>
-                                            }
-                                            @if(hasErrors('email','email')){
-                                                <p class="my-2 alert alert-danger p-2">Ingrese un email valido.</p>
-                                            }
-                                        </div>
-                                        <div class="modal-footer mt-4">
-                                                <button type="button" class="btn btn-secondary" (click)="resetForm()" data-bs-dismiss="modal"><i class="fa fa-camera-retro" aria-hidden="true"></i>Cerrar</button>
-                                                <button onsubmit="addVessel()"  type="submit" class="btn btn-primary">Agregar</button>
-                                        </div>
-                                    </form> 
-                                    
-                    </div>
+                                                <option value="Argentina">Argentina</option>
+                                                <option value="Panama">Panama</option>
+                                        <option value="Liberia">Liberia</option>
+                                        </select>
+                                        @if(hasErrors('bandera','required')){
+                                                <p  class=" text-danger small">Este campo es obligatorio.</p>
+                                        }
+                                </div>
+                                <div class="col-12">
+                                        <label class="form-label" for="vesseltype">Tipo de Buque:*</label>
+                                        <select formControlName="vesseltype" id="vesseltype" class="form-select" aria-label="Default select example">
+                                                <option value="">Seleccionar una opcion</option>
+                                                <option value="Tanker">Tanker</option>
+                                                <option value="Pushboat">Pushboat</option>
+                                        </select>
+                                        @if(hasErrors('vesseltype','required')){
+                                        <p class=" text-danger small">Este campo es obligatorio.</p>
+                                        }
+                                        
+                                </div>
+                                <div class="col-12">
+                                        <label class="form-label" for="contraseña">Numero IMO*</label>
+                                        <input class="form-control" formControlName="numeroimo" id="contraseña" type="number" required>
+                                        @if(hasErrors('numeroimo','required')){
+                                        <p class=" text-danger small">Este campo es obligatorio.</p>
+                                        }
+                                </div>
+                                <div class="modal-footer mt-4">
+                                        <button type="button" class="btn btn-secondary" (click)="resetForm()" data-bs-dismiss="modal">Close</button>
+                                        <button  onsubmit="addVessel()" [disabled]="practiceForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Agregar</button>
+                                </div>
+                        </form> 
+                </div>
+                </div>
         </div>
-    </div>   
 </div>
-
-<div class="containter bg-light">Lista de Buques</div>
-<div *ngFor="let vessel of vessels">
-        barco = {{vessel.name}}
+<div>
+        
+        <div class=" rounded grid">
+                <h2 class="text-center">Lista de Embarcaciones</h2>
+                <ul class="col-6 fs-6 p-4 list-group bg-light gap-3 rounded" *ngFor="let embarcaciones of vessels">
+                        <li class="list-group-item">
+                                <span class="fw-bold">Buque: </span>{{embarcaciones.name}}
+                        </li>
+                        <li class="list-group-item">
+                                <span class="fw-bold">Bandera: </span>{{embarcaciones.bandera}}
+                        </li>
+                        <li class="list-group-item">
+                                <span class="fw-bold">Numero IMO: </span>{{embarcaciones.numeroimo}}
+                        </li>
+                        <li class="list-group-item">
+                                <span class="fw-bold">Tipo de buque: </span>{{embarcaciones.vesseltype}}
+                        </li>
+                        
+                </ul>
+        </div>
 </div>
-
-
-
-
-
-
-
 
 
 
